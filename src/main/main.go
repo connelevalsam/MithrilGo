@@ -1,14 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
-	"fmt"
 )
 
 var (
-	err error
+	err   error
 	templ *template.Template
 )
 
@@ -29,35 +29,35 @@ func main() {
 }
 func index(writer http.ResponseWriter, request *http.Request) {
 	title := "Home"
-	err = templ.ExecuteTemplate(writer, "index.gohtml", title)
+	err = templ.ExecuteTemplate(writer, "index.html", title)
 	if err != nil {
 		log.Println(err.Error())
 		http.Error(writer, "there was an error", http.StatusInternalServerError)
 		return
 	}
-	fmt.Println("Name of page: "+title)
+	fmt.Println("Name of page: " + title)
 }
 
 func about(writer http.ResponseWriter, request *http.Request) {
 	title := "About"
-	/*
-	err = templ.ExecuteTemplate(writer, "about.html", title)
+
+	err = templ.ExecuteTemplate(writer, "index.html", title)
 	if err != nil {
 		log.Println(err.Error())
 		http.Error(writer, "there was an error", http.StatusInternalServerError)
 		return
-	}*/
-	fmt.Println("Name of page: "+title)
+	}
+	fmt.Println("Name of page: " + title)
 }
 
 func contact(writer http.ResponseWriter, request *http.Request) {
 	title := "Contact"
 	/*
-	err = templ.ExecuteTemplate(writer, "contact.html", title)
-	if err != nil {
-		log.Println(err.Error())
-		http.Error(writer, "there was an error", http.StatusInternalServerError)
-		return
-	}*/
-	fmt.Println("Name of page: "+title)
+		err = templ.ExecuteTemplate(writer, "contact.html", title)
+		if err != nil {
+			log.Println(err.Error())
+			http.Error(writer, "there was an error", http.StatusInternalServerError)
+			return
+		}*/
+	fmt.Println("Name of page: " + title)
 }
